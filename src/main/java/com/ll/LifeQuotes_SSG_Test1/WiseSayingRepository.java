@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 //레포지토리는 데이터관리역할이다.
 public class WiseSayingRepository {
+    private int wiseSayingId=0;
     Scanner sc;
-    WiseSaying wiseSayings;
+    ArrayList<WiseSaying> wiseSayings;
     public WiseSayingRepository(){
         sc = new Scanner(System.in);
         wiseSayings = new ArrayList<>();

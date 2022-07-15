@@ -17,4 +17,15 @@ public class Apptest {
         int id = rq.getIntParam("id", 0);
         assertEquals(1, id);
     }
+    @Test
+    void 파일에_내용쓰기() {
+        Util.mkdir("test_data");
+        Util.saveToFile("test_data/1.json", "내용");
+    }
+    @Test
+    void 파일내용불러오기() {
+        String line = Util.loadFile("test_data/1.json");
+
+        assertEquals("내용", line);
+    }
 }

@@ -1,6 +1,4 @@
 package com.ll.LifeQuotes_SSG_Test1;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 //App은 응대다!
 public class App {
