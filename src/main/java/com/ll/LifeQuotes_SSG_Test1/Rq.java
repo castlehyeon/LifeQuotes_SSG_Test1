@@ -20,16 +20,23 @@ public class Rq {
         for (String urlBit : urlBits) {
             //향상된 for문으로 urlBits[]에 있는 요소를 하나씩 뽑아 스트링의 urlBit로 추출한다.
             //"id=숫자1", "id=숫자2"...
-            String[] paramNameAndValue = urlBit.split("=", 2);
+            int limit = 2;
+            String[] paramNameAndValue = urlBit.split("=", limit);
             //추출한 urlBit를 =기준으로 또 나눈다.
             String paramName_ = paramNameAndValue[0];
             //id
-            String paramValue = paramNameAndValue[1];
+            String paramValue;
+            if( limit == 2){
+                paramValue = paramNameAndValue[1];
+            }else {
+                System.out.println("아이디를 다시 입력해주세요.");
+                return 0;
+            } //비어있는경우.
             //숫자
 
             //3단계
             if (paramName.equals(paramName_)) { //유저가 입력한 paramName과 저장된 parmName_이 같은지 확인
-                return Integer.parseInt(paramValue); //같다면 스트링이였던 paramValue를 정수로 변환해 리턴.
+                return Integer.parseInt(paramValue); //같다면 스트링이였던 paramValue를 정수로 변환해 리턴. 입력받은 숫자
             }
         }
 

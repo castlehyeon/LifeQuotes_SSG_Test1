@@ -45,9 +45,9 @@ public class WiseSayingRepository {
     public void remove(Rq rq) {
         //삭제는 추가적인 정보가 필요하니 쿼리스트링 도입. Rq클래스 필요!
         //이걸 전부 이제 리펙토링 들어가는게 맞다. 1. 스위치문 삭제=> 각자 메서드로 해결, 2. Rq클래스로 받고, 명령어 분기 3. 쿼리스트링 해결
-        //삭제?id=1이라는 입력이 들어온다면...
+        //삭제?id=1이라는 입력이 들어온다면...자
         int deleteId = rq.getIntParam("id", 0);
-        if ( deleteId == 0 ){
+        if ( deleteId == 0 ){ //deleteId값이 사용자 번호(index+1)
             System.out.printf("%d번 명언은 존재하지 않습니다.",deleteId);
         } else {
             wiseSayings.remove(deleteId-1);
@@ -124,3 +124,5 @@ public class WiseSayingRepository {
     //파일저장은 해당 디렉토리에 번호를 계속 매겨서 저장하는 식으로 해보자.
     //
 }
+
+//1. update, remove if문 수정하기.

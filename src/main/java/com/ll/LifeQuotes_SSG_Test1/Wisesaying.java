@@ -13,6 +13,11 @@ class WiseSaying {
     }
 
     @Override
+    //메서드다.
+    //()이게있겠네-> toString()
+    //클래스.toString() -> String
+    //오브젝트 메서드를 쓰는건 조금 다른것같아.
+    //sout에서 println(클래스명);
     public String toString() {
         return wiseSayingId +
                 "  /  " + content +
