@@ -28,6 +28,9 @@ public class App {
                 case "목록":
                     controller.list(rq);
                     break;
+                case "빌드":
+                    controller.build(rq);
+                    break;
                 case "종료":
                     break outer;
             }

@@ -22,4 +22,8 @@ public class WiseSayingController {
     public void list(Rq rq) {
         repository.list(rq);
     }
+
+    public void build(Rq rq) {
+        repository.build(rq);
+    }
 }

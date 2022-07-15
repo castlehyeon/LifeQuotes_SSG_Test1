@@ -1,5 +1,6 @@
 package com.ll.LifeQuotes_SSG_Test1;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -36,7 +37,7 @@ public class WiseSayingRepository {
             System.out.printf("작가(기존): %s\n", wiseSaying.author);
             System.out.printf("작가 : ");
             String updateAuthor = sc.nextLine().trim();
-            wiseSayings.set(updateId-1, new WiseSaying(wiseSayingId, updateContent, updateAuthor));
+            wiseSayings.set(updateId-1, new WiseSaying(updateId, updateContent, updateAuthor));
             System.out.printf("%d번째 명언이 수정 되었습니다.\n", updateId);
         }
     }
@@ -66,4 +67,52 @@ public class WiseSayingRepository {
             //주소값이 나오는 이유: toString 오버라이딩 안해서.
         }
     }
+
+    public void build(Rq rq) {
+        File d = new File("test_data");
+
+        if( d.exists()) {
+
+
+            //내용에 해당되는 부분객체 생성
+            //String saveFile = wiseSayings; 이런식으로 말고 요소 하나씩 \n을 기준으로 body에 담는 식으로 해보자.
+            String body = "";
+            for(int i = 0; i<wiseSayings.size(); i++ ){
+                body += wiseSayings.get(i) + "\n";
+            }
+            int fileNum = 1;
+
+            //디렉토리 내부에 같은 파일이 있는지 검사
+            //File f = new File("test_data/1.json");
+            String DATA_DIRECTORY = "test_data";
+            File dir = new File(DATA_DIRECTORY);
+
+            String[] filenames = dir.list();//파일리스트 추출
+            //이대로 하면 1.json이 들어가므로 .split으로 1만 걸러내야함.
+
+            for (String filenamseBit : filenames) {
+                String[] fileName = filenamseBit.split(".", 2);
+                //추출한 urlBit를 =기준으로 또 나눈다.
+                String fileName_ = fileName[0];
+                //파일이름은 숫자일것. [1]은 필요없어.
+
+                //3단계
+                if (fileName.equals(fileName_)) { //기존 file리스트 이름과 생성하려는 파일이름이 같은지 확인.
+                    ++fileNum;
+                }
+            }
+            Util.saveToFile("test_data/"+fileNum+".json", body);
+            // 테스트처럼 ""를 넣으면 바뀌지 않으니, path, fileName 변수를 넣어볼까.
+
+            System.out.printf("%d.json 파일이 추가되었습니다.\n",fileNum);
+        }else {//만약 디렉토리가 없다면 생성
+            System.out.println("디렉토리가 존재하지 않습니다.");
+            Util.mkdir("test_data");
+            System.out.println("다시 실행해주세요");
+            return;
+        }
+
+    }
+    //파일저장은 해당 디렉토리에 번호를 계속 매겨서 저장하는 식으로 해보자.
+    //
 }
