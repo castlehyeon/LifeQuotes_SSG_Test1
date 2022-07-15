@@ -91,13 +91,21 @@ public class WiseSayingRepository {
             //이대로 하면 1.json이 들어가므로 .split으로 1만 걸러내야함.
 
             for (String filenamseBit : filenames) {
-                String[] fileName = filenamseBit.split(".", 2);
+                String[] fileName = filenamseBit.split("[.]",2);
                 //추출한 urlBit를 =기준으로 또 나눈다.
+
+
+                //이슈: str.split("[.]");
+                //정규식에서 []는 문자의 집합이나 범위를 나타냅니다.
+                //마침표(.)를 범위를 나타내는 [] 사이에 넣어서, 문자로 취급하였습니다.
+                //출처: https://hianna.tistory.com/618 [어제 오늘 내일:티스토리]
+
+
                 String fileName_ = fileName[0];
                 //파일이름은 숫자일것. [1]은 필요없어.
 
                 //3단계
-                if (fileName.equals(fileName_)) { //기존 file리스트 이름과 생성하려는 파일이름이 같은지 확인.
+                if (fileNum == Integer.parseInt(fileName_)) { //기존 file리스트 이름과 생성하려는 파일이름이 같은지 확인.
                     ++fileNum;
                 }
             }
