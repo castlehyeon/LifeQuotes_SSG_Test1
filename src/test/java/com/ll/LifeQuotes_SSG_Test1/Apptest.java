@@ -11,10 +11,10 @@ public class Apptest {
         String path = rq.getpath();
         assertEquals("삭제", path);
     }
-//    @Test
-//    public void Rq_getIntParam(){
-//        Rq rq = new Rq("삭제?id=1");
-//        String path = rq.getIntParam("id", 0);
-//        assertEquals(1, id);
-//    }
+    @Test
+    public void Rq_getIntParam(){
+        Rq rq = new Rq("삭제?id=1");
+        int id = rq.getIntParam("id", 0);
+        assertEquals(1, id);
+    }
 }

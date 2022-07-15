@@ -35,9 +35,9 @@ public class App {
                 case "삭제": //삭제는 추가적인 정보가 필요하니 쿼리스트링 도입. Rq클래스 필요!
                     //이걸 전부 이제 리펙토링 들어가는게 맞다. 1. 스위치문 삭제=> 각자 메서드로 해결, 2. Rq클래스로 받고, 명령어 분기 3. 쿼리스트링 해결
                     //삭제?id=1이라는 입력이 들어온다면...
-                    //int inputId = Rq.getIntParam(new Rq(cmd));
-                    //wiseSayings.remove(inputId);
-                    System.out.printf("%d번째 명언이 삭제 되었습니다.\n", wiseSayingId);
+                    int inputId = rq.getIntParam("id", 0);
+                    wiseSayings.remove(inputId-1);
+                    System.out.printf("%d번째 명언이 삭제 되었습니다.\n", inputId);
                     break;
                 case "목록":
                     System.out.println("번호\t/\t작가\t/\t명언");
